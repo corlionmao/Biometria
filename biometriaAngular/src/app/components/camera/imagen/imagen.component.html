@@ -1,0 +1,41 @@
+<div>
+    <webcam [height]="200" [width]="200" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+            [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
+            [videoOptions]="videoOptions"
+            [imageQuality]="1"
+            (cameraSwitched)="cameraWasSwitched($event)"
+            (initError)="handleInitError($event)"
+    ></webcam>
+    <br/>
+    <button class="actionBtn" (click)="triggerSnapshot();">Capturar</button>
+    <!-- <button class="actionBtn" (click)="toggleWebcam();">Toggle Webcam</button> -->
+    <br/>
+    <button class="actionBtn" (click)="showNextWebcam(true);" [disabled]="!multipleWebcamsAvailable">Cambiar Camara</button>
+    <!-- <input id="cameraSwitchCheckbox" type="checkbox" [(ngModel)]="allowCameraSwitch"><label for="cameraSwitchCheckbox">Allow Camera Switch</label>
+    <br/>
+    DeviceId: <input id="deviceId" type="text" [(ngModel)]="deviceId" style="width: 500px">
+    <button (click)="showNextWebcam(deviceId);">Activate</button> -->
+  </div>
+  <div class="snapshot" *ngIf="webcamImage">
+    <h2></h2>
+    <img [src]="webcamImage.imageAsDataUrl" height="200" width="200"/>
+  </div>
+ <div>
+  <br/>
+    <button class="actionBtn">Grabar</button>
+    <br/> 
+</div>
+<div>
+  <br/>
+    <button class="actionBtn" (click)="showImages();">PUSH ME </button>
+    <br/> 
+</div>
+<div>
+  <br/>
+    <button class="actionBtn" (click)="showImages2();">PUSH ME 2 </button>
+    <br/> 
+</div>
+  <h4 *ngIf="errors.length > 0">Messages:</h4>
+  <ul *ngFor="let error of errors">
+    <li>{{error | json}}</li>
+  </ul>

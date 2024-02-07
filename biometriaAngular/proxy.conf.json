@@ -1,0 +1,11 @@
+{
+    "/CallMorphoAPI":{
+        "target": "http://127.0.0.1:8080",
+        "secure": true,
+        "changeOrigin" : true,
+        "timeout": 360000,
+        "logLevel": "debug"
+    }
+
+
+}
